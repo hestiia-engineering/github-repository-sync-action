@@ -8,6 +8,9 @@ inputs:
   ssh_private_key:
     description: SSH private key for ssh connection to the target repository
     required: false
+  ssh_config:
+    description: Optional SSH config
+    required: false
   target_repo_url:
     description: Target git repository URL
     required: true
