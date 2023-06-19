@@ -24,7 +24,7 @@ this action so that the git repository is initialized.
     # keys within the target repository
     ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY }}
     # Optional content to put in .ssh/config, see notes
-    ssh_config: ${{ env.SSH_CONFIG }}
+    ssh_config: ${{ vars.SSH_CONFIG }}
     # The SSH-based URL to the target repository
     target_repo_url: git@github.com:net-engine/github-repository-sync-action-test.git
 ```
@@ -39,11 +39,11 @@ source repository and branch to any destination, or copying all branches.
 
 Support for an ssh config makes it possible to set ssh connection details such as the username dynamically.
 
-For example, using AWS CodeCommit requires a custom username which is achieved with an ssh config such as:
+For example, using AWS CodeCommit requires a custom username which can be passed in a variable SSH_CONFIG containing:
 
 ```
-Host git-codecommit.us-east-1.amazonaws.com
-   User Your-SSH-Key-ID, such as APKAEIBAERJR2EXAMPLE
+Host git-codecommit.<region>.amazonaws.com
+   User <Your-SSH-Key-ID> (such as APKAEIBAERJR2EXAMPLE)
    IdentityFile /root/.ssh/id_rsa
 ```
 
